@@ -15,7 +15,7 @@ endfunction
 
 function! s:LsFilesOpen()
   call s:LsFilesCreate()
-  let cmd = ":e " . s:filename
+  let cmd = ":e " . s:filename . "| nnoremap <buffer> <cr> gf"
   execute cmd
 endfunction
 
