@@ -5,7 +5,7 @@
 "=============================================================================
 scriptencoding utf-8
 
-let s:filename = "ls-files.lff"
+let s:filename = ".ls-files.lff"
 
 function! s:LsFilesCreate()
   if !filereadable( s:filename )

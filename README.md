@@ -16,10 +16,10 @@ This plugin currently supports files under git repository.
 
 #### Note
 
-`:LsFilesOpen` simply opens file named `ls-files.lff`.  
+`:LsFilesOpen` simply opens file named `.ls-files.lff`.  
 This file is automatically created by following command if it does not exist.
 
-    :!git ls-files > ls-files.lff`
+    :!git ls-files > .ls-files.lff`
 
 ### Update
 
