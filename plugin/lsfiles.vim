@@ -5,6 +5,8 @@
 "=============================================================================
 scriptencoding utf-8
 
+autocmd BufRead,BufNewFile .ls-files.lff setfiletype vim-ls-files
+
 let s:filename = ".ls-files.lff"
 
 function! s:LsFilesCreate()
@@ -15,7 +17,7 @@ endfunction
 
 function! s:LsFilesOpen()
   call s:LsFilesCreate()
-  let cmd = ":e " . s:filename . "| nnoremap <buffer> <cr> gf"
+  let cmd = ":e " . s:filename
   execute cmd
 endfunction
 
