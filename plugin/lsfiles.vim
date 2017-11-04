@@ -5,6 +5,14 @@
 "=============================================================================
 scriptencoding utf-8
 
+if exists('g:loaded_vim_ls_files')
+  finish
+endif
+let g:loaded_vim_ls_files = 1
+
+let s:save_cpo = &cpo
+set cpo&vim
+
 autocmd BufRead,BufNewFile .ls-files.lff setfiletype vim-ls-files
 
 let s:filename = ".ls-files.lff"
@@ -28,3 +36,7 @@ endfunction
 
 command! LsFilesOpen   call s:LsFilesOpen()
 command! LsFilesUpdate call s:LsFilesUpdate()
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
+
