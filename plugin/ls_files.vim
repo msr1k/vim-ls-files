@@ -14,7 +14,10 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 
-autocmd BufRead,BufNewFile .ls-files.lff setfiletype vim-ls-files
+augroup vim-ls-files
+  autocmd!
+  autocmd BufRead,BufNewFile .ls-files.lff setfiletype vim-ls-files
+augroup END
 
 command! LsFilesOpen   call ls_files#Open()
 command! LsFilesUpdate call ls_files#Update()
