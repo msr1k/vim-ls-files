@@ -18,8 +18,33 @@ function! ls_files#Open()
 endfunction
 
 function! ls_files#Update()
-  let cmd = ":!git ls-files > " . s:filename
-  silent execute cmd
+  let cmd = ""
+  let cmdline = ""
+  if executable('git')
+    silent execute "!git rev-parse --git-dir"
+    if v:shell_error == 0
+      let cmd = "git"
+      let cmdline = "git ls-files"
+    endif
+  endif
+  " if cmd == "" && executable('svn')
+  "   let cmd = "svn"
+  "   let cmdline = "svn list -R"
+  " endif
+  if cmd == "" && executable('dir')
+    let cmd = "dir"
+    let cmdline = "dir /s /b /a-d"
+  endif
+  if cmd == "" && executable('find')
+    let cmd = "find"
+    let cmdline = "find **/* -type f"
+  endif
+  if cmd != ""
+    let cmd = ":!echo [listed by " . cmd . "] > " . s:filename
+    let cmdline = ":!" . cmdline . " >> " . s:filename
+    silent execute cmd
+    silent execute cmdline
+  endif
 endfunction
 
 
