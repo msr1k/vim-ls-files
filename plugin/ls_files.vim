@@ -10,8 +10,8 @@ if exists('g:loaded_vim_ls_files')
 endif
 let g:loaded_vim_ls_files = 1
 
-let s:save_cpo = &cpo
-set cpo&vim
+let s:save_cpo = &cpoptions
+set cpoptions&vim
 
 
 augroup vim-ls-files
@@ -23,6 +23,6 @@ command! LsFilesOpen   call ls_files#Open()
 command! LsFilesUpdate call ls_files#Update()
 
 
-let &cpo = s:save_cpo
+let &cpoptions = s:save_cpo
 unlet s:save_cpo
 
