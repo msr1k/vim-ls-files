@@ -18,8 +18,10 @@ function! ls_files#Open()
 endfunction
 
 function! ls_files#Update()
-  let cmd = ':!git ls-files > ' . s:filename
-  silent execute cmd
+  let str = system("git ls-files")
+  let list = split(str, '\n')
+  call writefile(list, s:filename)
+  call ls_files#Open()
 endfunction
 
 
